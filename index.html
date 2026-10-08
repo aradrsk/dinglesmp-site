@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DingleBerry SMP | Free Minecraft Survival Economy Server</title>
+<meta name="description" content="DingleBerry SMP is a free-to-play Minecraft survival economy server for Java and Bedrock. Crates, spawners, bounties, teams, events and daily rewards. No pay-to-win. IP: play.dingleberrysmp.com">
+<meta name="keywords" content="minecraft smp, minecraft server, survival economy server, crossplay smp, java bedrock server, free minecraft server, crates, spawners, bounties">
+<meta property="og:title" content="DingleBerry SMP">
+<meta property="og:description" content="Free-to-play survival economy. Java + Bedrock. IP: play.dingleberrysmp.com">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#a855f7">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='7' y='1' width='2' height='3' fill='%2322c55e'/><rect x='9' y='2' width='3' height='2' fill='%2322c55e'/><rect x='4' y='4' width='8' height='2' fill='%23ff5fa2'/><rect x='3' y='6' width='10' height='6' fill='%23d946ef'/><rect x='4' y='12' width='8' height='2' fill='%23a855f7'/><rect x='5' y='7' width='2' height='2' fill='%23fbcfe8'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0a14;
+  --bg-2: #15101f;
+  --card: #1b1427;
+  --card-2: #221934;
+  --line: #2e2342;
+  --text: #f4effa;
+  --muted: #a99bbd;
+  --pink: #ff5fa2;
+  --purple: #a855f7;
+  --green: #4ade80;
+  --gold: #fbbf24;
+  --aqua: #22d3ee;
+  --red: #f87171;
+  --grad: linear-gradient(135deg, var(--pink), var(--purple));
+  --radius: 18px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 Inter, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: "Lilita One", Inter, sans-serif; font-weight: 400; letter-spacing: .5px; line-height: 1.1; }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Nav */
+nav {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(13, 10, 20, .8); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+nav .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; font-family: "Lilita One"; font-size: 22px; }
+.logo svg { width: 30px; height: 30px; }
+.links { display: flex; gap: 22px; margin-left: auto; color: var(--muted); font-weight: 500; font-size: 15px; }
+.links a:hover { color: var(--text); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px;
+  border: 0; cursor: pointer; transition: transform .15s, box-shadow .15s, background .15s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-main { background: var(--grad); color: #fff; box-shadow: 0 8px 28px -8px rgba(217, 70, 239, .6); }
+.btn-ghost { background: var(--card-2); color: var(--text); border: 1px solid var(--line); }
+.btn-discord { background: #5865f2; color: #fff; }
+nav .btn { padding: 9px 16px; }
+
+/* Hero */
+.hero { position: relative; padding: 90px 0 70px; text-align: center; }
+.hero::before {
+  content: ""; position: absolute; inset: -200px 0 auto; height: 700px; z-index: -1;
+  background: radial-gradient(600px 300px at 50% 40%, rgba(168, 85, 247, .28), transparent 70%),
+              radial-gradient(400px 260px at 30% 30%, rgba(255, 95, 162, .18), transparent 70%);
+}
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 99px; background: var(--card); border: 1px solid var(--line);
+  color: var(--muted); font-size: 14px; font-weight: 600;
+}
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
+.dot.on { background: var(--green); box-shadow: 0 0 0 4px rgba(74, 222, 128, .18); }
+.hero h1 { font-size: clamp(48px, 9vw, 96px); margin: 22px 0 14px; }
+.hero p.sub { color: var(--muted); font-size: clamp(17px, 2.2vw, 20px); max-width: 620px; margin: 0 auto 32px; }
+.ip {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  padding: 10px 10px 10px 22px; font-size: clamp(16px, 3vw, 22px); font-weight: 700;
+  max-width: 100%;
+}
+.ip code { font-family: inherit; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hero .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+.tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 28px; color: var(--muted); font-size: 14px; font-weight: 600; }
+.tags span { padding: 5px 12px; border-radius: 99px; border: 1px dashed var(--line); }
+
+/* Countdown */
+.countdown { display: flex; gap: 12px; justify-content: center; margin: 44px auto 0; flex-wrap: wrap; }
+.countdown div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 0; width: 92px; }
+.countdown b { display: block; font-family: "Lilita One"; font-size: 36px; line-height: 1; }
+.countdown small { color: var(--muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.launch-label { margin-top: 40px; color: var(--muted); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+
+/* Sections */
+section { padding: 80px 0; }
+section.alt { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.head { text-align: center; margin-bottom: 44px; }
+.head h2 { font-size: clamp(34px, 5vw, 52px); margin-bottom: 10px; }
+.head p { color: var(--muted); max-width: 600px; margin: 0 auto; }
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 24px; transition: transform .2s, border-color .2s;
+}
+.card:hover { transform: translateY(-4px); border-color: #4a3868; }
+.card .ico { font-size: 30px; margin-bottom: 12px; }
+.card h3 { font-size: 23px; margin-bottom: 6px; }
+.card p { color: var(--muted); font-size: 15px; }
+.card code { background: var(--card-2); padding: 1px 7px; border-radius: 6px; font-size: 13px; color: var(--text); }
+
+/* Store */
+.banner {
+  display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+  background: var(--grad); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 30px;
+  font-family: "Lilita One"; font-size: clamp(20px, 3vw, 28px); text-align: center; color: #fff;
+}
+.item { display: flex; flex-direction: column; }
+.item .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.price {
+  font-family: "Lilita One"; font-size: 22px;
+  padding: 2px 12px; border-radius: 10px; background: rgba(74, 222, 128, .12); color: var(--green);
+}
+.price s { color: var(--muted); font-family: Inter; font-size: 14px; margin-right: 6px; }
+.earn { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+.earn b { color: var(--text); font-weight: 600; }
+.tier-common { --c: #e5e7eb; } .tier-rare { --c: var(--aqua); } .tier-epic { --c: #e879f9; } .tier-legendary { --c: var(--gold); }
+.key-name { color: var(--c); }
+
+/* Vote */
+.votes { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.vote {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; font-weight: 700;
+}
+.vote:hover { border-color: var(--purple); }
+.vote span { color: var(--purple); }
+.rewards { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+.rewards div { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; font-weight: 600; font-size: 15px; }
+
+/* Join */
+.steps { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.steps ol { padding-left: 20px; color: var(--muted); }
+.steps li { margin: 6px 0; }
+.steps li b { color: var(--text); }
+
+/* FAQ */
+details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; margin-bottom: 12px; }
+summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; }
+summary::after { content: "+"; color: var(--purple); font-size: 22px; line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p { color: var(--muted); margin-top: 10px; }
+.faq { max-width: 760px; margin: 0 auto; }
+
+footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 14px; }
+footer .logo { justify-content: center; margin-bottom: 10px; color: var(--text); }
+
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 120px);
+  background: var(--green); color: #052e16; font-weight: 700; padding: 12px 22px; border-radius: 12px;
+  transition: transform .25s; z-index: 50;
+}
+.toast.show { transform: translate(-50%, 0); }
+
+@media (max-width: 760px) {
+  .links { display: none; }
+  nav .btn { margin-left: auto; }
+  .hero { padding-top: 60px; }
+  section { padding: 60px 0; }
+  .countdown div { width: 74px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="1" width="2" height="3" fill="#22c55e"/><rect x="9" y="2" width="3" height="2" fill="#22c55e"/><rect x="4" y="4" width="8" height="2" fill="#ff5fa2"/><rect x="3" y="6" width="10" height="6" fill="#d946ef"/><rect x="4" y="12" width="8" height="2" fill="#a855f7"/><rect x="5" y="7" width="2" height="2" fill="#fbcfe8"/></svg>
+      <span>DingleBerry <span class="grad">SMP</span></span>
+    </a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#store">Store</a>
+      <a href="#vote">Vote</a>
+      <a href="#join">How to join</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-main" href="#join">Play now</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="pill"><span class="dot" id="status-dot"></span><span id="status-text">Checking server…</span></span>
+    <h1><span class="grad">DingleBerry SMP</span></h1>
+    <p class="sub">The free-to-play survival economy server. Grind, trade, raid bounties and open crates without spending a cent. Java + Bedrock.</p>
+    <button class="ip" id="copy-ip" title="Click to copy">
+      <code id="ip-text">play.dingleberrysmp.com</code>
+      <span class="btn btn-main">Copy IP</span>
+    </button>
+    <div class="row">
+      <a class="btn btn-discord" id="discord-btn" href="#" target="_blank" rel="noopener">Join our Discord</a>
+      <a class="btn btn-ghost" href="#vote">Vote for rewards</a>
+    </div>
+    <div class="tags"><span>Java & Bedrock</span><span>Version 26.2</span><span>100% free</span><span>No pay-to-win</span><span>Claims</span></div>
+
+    <p class="launch-label" id="launch-label">Season 1 launches Saturday, Oct 24</p>
+    <div class="countdown" id="countdown">
+      <div><b id="cd-d">0</b><small>Days</small></div>
+      <div><b id="cd-h">0</b><small>Hours</small></div>
+      <div><b id="cd-m">0</b><small>Minutes</small></div>
+      <div><b id="cd-s">0</b><small>Seconds</small></div>
+    </div>
+  </div>
+</header>
+
+<section class="alt" id="features">
+  <div class="wrap">
+    <div class="head">
+      <h2>Everything a <span class="grad">real SMP</span> needs</h2>
+      <p>Custom-built features you won't find on a vanilla server. Type <code style="background:var(--card-2);padding:1px 7px;border-radius:6px">/menu</code> in game to see them all.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ico">💰</div><h3>Player Economy</h3><p>Sell your loot at <code>/shop</code>, trade on the <code>/ah</code> auction house, and post buy <code>/orders</code> for anything you need.</p></div>
+      <div class="card"><div class="ico">🎁</div><h3>Crates & Keys</h3><p>Four crate tiers from Common to Legendary. Win money, gems and gear, and watch the server go wild on legendary pulls.</p></div>
+      <div class="card"><div class="ico">🎯</div><h3>Bounties</h3><p>Put a price on anyone's head with <code>/bounty</code>. Combat tagging means nobody escapes by logging out.</p></div>
+      <div class="card"><div class="ico">🔥</div><h3>Spawners</h3><p>Mine spawners with Silk Touch, stack them in one block and build the farm of your dreams.</p></div>
+      <div class="card"><div class="ico">⚔️</div><h3>Teams & Duels</h3><p>Start a <code>/team</code> with your friends: shared home, team chat, friendly fire toggle. Settle beef with a <code>/duel</code>.</p></div>
+      <div class="card"><div class="ico">🏆</div><h3>Daily Events</h3><p>King of the Hill, supply drop envoys and fishing contests every day, with real prizes.</p></div>
+      <div class="card"><div class="ico">📅</div><h3>Daily Rewards</h3><p>Log in for a 7-day <code>/daily</code> streak, earn playtime milestones and get paid in the AFK zone.</p></div>
+      <div class="card"><div class="ico">🏠</div><h3>Claims & Warps</h3><p>Protect your base with land claims, then show off your shop with a <code>/pwarp</code>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="store">
+  <div class="wrap">
+    <div class="head">
+      <h2>The <span class="grad">Store</span></h2>
+      <p>Other servers sell this stuff. We don't. Every item below is earned in game.</p>
+    </div>
+    <div class="banner">✨ Everything costs $0. No pay-to-win. No paywalls. Ever. ✨</div>
+    <p style="text-align:center;color:var(--muted);font-size:14px;margin:-14px 0 26px">Crossed-out prices are roughly what other servers charge for the same thing.</p>
+    <div class="grid">
+      <div class="card item tier-common">
+        <div class="top"><div class="ico">🗝️</div><span class="price"><s>$4.99</s>FREE</span></div>
+        <h3 class="key-name">Common Key</h3>
+        <p>Money, iron, food and the odd surprise.</p>
+        <div class="earn"><b>Earn it:</b> voting, /daily, the AFK zone, the starter kit</div>
+      </div>
+      <div class="card item tier-rare">
+        <div class="top"><div class="ico">🗝️</div><span class="price"><s>$9.99</s>FREE</span></div>
+        <h3 class="key-name">Rare Key</h3>
+        <p>Diamonds, enchanted gear and bigger cash drops.</p>
+        <div class="earn"><b>Earn it:</b> vote parties, daily streaks, fishing contests</div>
+      </div>
+      <div class="card item tier-epic">
+        <div class="top"><div class="ico">🗝️</div><span class="price"><s>$19.99</s>FREE</span></div>
+        <h3 class="key-name">Epic Key</h3>
+        <p>Top-tier gear and five-figure money rewards.</p>
+        <div class="earn"><b>Earn it:</b> day 7 of your streak, KOTH wins, envoys</div>
+      </div>
+      <div class="card item tier-legendary">
+        <div class="top"><div class="ico">🗝️</div><span class="price"><s>$39.99</s>FREE</span></div>
+        <h3 class="key-name">Legendary Key</h3>
+        <p>The rarest loot on the server, announced to everyone.</p>
+        <div class="earn"><b>Earn it:</b> playtime milestones, the Gem Shop</div>
+      </div>
+      <div class="card item">
+        <div class="top"><div class="ico">💎</div><span class="price"><s>$2.99</s>FREE</span></div>
+        <h3>Gems</h3>
+        <p>The premium currency. Spend them at <code>/gemshop</code> on keys, elytras, shulkers and sell wands.</p>
+        <div class="earn"><b>Earn it:</b> AFK zone, votes, daily rewards, events</div>
+      </div>
+      <div class="card item">
+        <div class="top"><div class="ico">🌈</div><span class="price"><s>$7.99</s>FREE</span></div>
+        <h3>Cosmetics</h3>
+        <p>Chat tags, name colors and particle trails. Look rich without being rich.</p>
+        <div class="earn"><b>Earn it:</b> gems, playtime, voting, linking Discord</div>
+      </div>
+      <div class="card item">
+        <div class="top"><div class="ico">🪄</div><span class="price"><s>$5.99</s>FREE</span></div>
+        <h3>Sell Wands</h3>
+        <p>Sell a whole chest in one click, at up to 2x shop prices.</p>
+        <div class="earn"><b>Earn it:</b> the Gem Shop</div>
+      </div>
+      <div class="card item">
+        <div class="top"><div class="ico">⭐</div><span class="price"><s>$14.99</s>FREE</span></div>
+        <h3>[OG] Tag</h3>
+        <p>Permanent proof you were here first.</p>
+        <div class="earn"><b>Earn it:</b> join during launch week (before Nov 1)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="vote">
+  <div class="wrap">
+    <div class="head">
+      <h2>Vote & get <span class="grad">paid</span></h2>
+      <p>Every vote helps new players find us, and you get rewarded every single time.</p>
+    </div>
+    <div class="rewards">
+      <div>💵 $500</div><div>💎 3 Gems</div><div>🗝️ Common Key</div><div>🎉 Vote party every 50 votes</div>
+    </div>
+    <div class="votes" id="vote-list"></div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="wrap">
+    <div class="head">
+      <h2>How to <span class="grad">join</span></h2>
+      <p>Takes about 30 seconds.</p>
+    </div>
+    <div class="steps">
+      <div class="card">
+        <h3>☕ Java Edition</h3>
+        <ol>
+          <li>Open Minecraft and click <b>Multiplayer</b></li>
+          <li>Click <b>Add Server</b></li>
+          <li>Server address: <b>play.dingleberrysmp.com</b></li>
+          <li>Accept the resource pack (it adds the rank badges)</li>
+          <li>Type <b>/rtp</b> to head into the wild</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>📱 Bedrock Edition</h3>
+        <ol id="bedrock-steps">
+          <li>Go to <b>Play</b> → <b>Servers</b> → <b>Add Server</b></li>
+          <li>Address: <b>play.dingleberrysmp.com</b></li>
+          <li>Port: <b id="bedrock-port">19132</b></li>
+          <li>Works on phone, Xbox, PlayStation, Switch and Windows</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="faq">
+  <div class="wrap">
+    <div class="head"><h2>FAQ</h2></div>
+    <div class="faq">
+      <details><summary>Is it really free?</summary><p>Yes. There's no store, no paid ranks and no paid keys. Everything is earned by playing.</p></details>
+      <details><summary>What version is the server?</summary><p>26.2. Older Java versions can usually join too, and Bedrock players are supported.</p></details>
+      <details><summary>Is griefing allowed?</summary><p>No. Claim your land and only the people you trust can build or open chests there.</p></details>
+      <details><summary>Is PvP on?</summary><p>Yes, in the survival world. Spawn is a safe zone. If you log out while in combat, you die.</p></details>
+      <details><summary>How do I report a cheater?</summary><p>Use <b>/report &lt;player&gt; &lt;reason&gt;</b> in game. We also run an anticheat.</p></details>
+      <details><summary>Can I get a media rank?</summary><p>If you make YouTube or TikTok videos on the server, ask in our Discord. It's free too.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">DingleBerry <span class="grad">SMP</span></div>
+    <p>play.dingleberrysmp.com · Not affiliated with Mojang or Microsoft.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast">IP copied! See you in game 👋</div>
+
+<script>
+// Edit these, then push.
+const CONFIG = {
+  ip: "play.dingleberrysmp.com",
+  discord: "", // e.g. "https://discord.gg/abc123" (button hides while empty)
+  bedrockPort: "19132", // "" hides the Bedrock port line
+  launch: "2026-10-24T18:00:00-04:00", // Saturday Oct 24, 6 PM Eastern
+  votes: [
+    { name: "Minecraft-MP", url: "https://minecraft-mp.com/server/364998/vote/" },
+  ],
+};
+
+document.getElementById("ip-text").textContent = CONFIG.ip;
+
+const discord = document.getElementById("discord-btn");
+if (CONFIG.discord) discord.href = CONFIG.discord; else discord.style.display = "none";
+
+if (CONFIG.bedrockPort) document.getElementById("bedrock-port").textContent = CONFIG.bedrockPort;
+else document.getElementById("bedrock-port").parentElement.remove();
+
+const list = document.getElementById("vote-list");
+CONFIG.votes.forEach((site, i) => {
+  const a = document.createElement("a");
+  a.className = "vote"; a.href = site.url; a.target = "_blank"; a.rel = "noopener";
+  a.innerHTML = `<div>#${i + 1} ${site.name}</div><span>Vote →</span>`;
+  list.appendChild(a);
+});
+
+const toast = document.getElementById("toast");
+document.getElementById("copy-ip").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(CONFIG.ip); } catch (e) {
+    const t = document.createElement("textarea"); t.value = CONFIG.ip; document.body.appendChild(t);
+    t.select(); document.execCommand("copy"); t.remove();
+  }
+  toast.classList.add("show"); setTimeout(() => toast.classList.remove("show"), 2200);
+});
+
+// Launch countdown; after launch it turns into a "Season 1 is live" label.
+const launch = new Date(CONFIG.launch).getTime();
+function tick() {
+  const left = launch - Date.now();
+  if (left <= 0) {
+    document.getElementById("countdown").remove();
+    document.getElementById("launch-label").textContent = "Season 1 is live. Hop on!";
+    return;
+  }
+  const s = Math.floor(left / 1000);
+  document.getElementById("cd-d").textContent = Math.floor(s / 86400);
+  document.getElementById("cd-h").textContent = Math.floor(s % 86400 / 3600);
+  document.getElementById("cd-m").textContent = Math.floor(s % 3600 / 60);
+  document.getElementById("cd-s").textContent = s % 60;
+  setTimeout(tick, 1000);
+}
+tick();
+
+// Live player count from mcsrvstat.us (free public status API).
+fetch("https://api.mcsrvstat.us/3/" + CONFIG.ip)
+  .then(r => r.json())
+  .then(d => {
+    const dot = document.getElementById("status-dot"), text = document.getElementById("status-text");
+    if (d.online) { dot.classList.add("on"); text.textContent = `${d.players.online} playing now`; }
+    else text.textContent = "Server offline";
+  })
+  .catch(() => { document.getElementById("status-text").textContent = "play.dingleberrysmp.com"; });
+</script>
+</body>
+</html>
